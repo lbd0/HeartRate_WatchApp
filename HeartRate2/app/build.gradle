@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    // Hilt 사용을 위한 플러그인
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -9,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "kr.ac.hallym.heartrate"
-        minSdk 25
+        minSdk 30
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -34,7 +37,29 @@ dependencies {
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.3.0'
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation "androidx.fragment:fragment-ktx:1.5.3"
+
     implementation 'androidx.wear:wear:1.2.0'
 
-    implementation 'androidx.health:health-connect-client:1.0.0-alpha01'
+    // Hilt dependency injection
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+
+    // Health Services
+    implementation 'androidx.health:health-services-client:1.0.0-beta01'
+
+    // 코루틴과 연결활 때 사용
+    implementation 'com.google.guava:guava:30.1.1-android'
+    implementation "androidx.concurrent:concurrent-futures-ktx:1.1.0"
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-service:2.5.1"
+
+    // Material
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.benchmark:benchmark-common:1.0.0'
 }

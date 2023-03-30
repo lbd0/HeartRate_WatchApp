@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-feature android:name="android.hardware.type.watch" />
 
+    <!-- 심박수 데이터를 받기 위한 permission -->
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+
+    <!-- 쿼리를 추가하면 Health Services 에서 앱을 인식할 수 있음 -->
+    <queries>
+        <package android:name="com.google.android.wearable.healthservices" />
+    </queries>
+
+
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.DeviceDefault">
+        android:theme="@style/AppTheme">
         <uses-library
             android:name="com.google.android.wearable"
             android:required="true" />
