@@ -21,6 +21,7 @@ class HealthServicesManager @Inject constructor(
 ) {
     private val measureClient = healthServicesClient.measureClient
 
+    // 기기가 심박수를 제공할 수 있는지 확인
     suspend fun hasHeartRateCapability(): Boolean {
         val capabiliies = measureClient.getCapabilitiesAsync().await()
         return (DataType.HEART_RATE_BPM in capabiliies.supportedDataTypesMeasure)
@@ -32,9 +33,11 @@ class HealthServicesManager @Inject constructor(
      *
      * [callbackFlow]는 콜백 기반 API와 Kotlin 흐름을 연결하는데 사용
      */
+    // 심박수 콜백 함수
     @ExperimentalCoroutinesApi
     fun heartRateMeasureFlow() = callbackFlow {
         val callback = object : MeasureCallback {
+            // 심박수 측정이 가능한가
             override fun onAvailabilityChanged(dataType: DeltaDataType<*, *>, availability: Availability) {
                 // DataTypeAvailability만 다시 전송 (LocationAvailability X)
                 if (availability is DataTypeAvailability) {
@@ -42,6 +45,7 @@ class HealthServicesManager @Inject constructor(
                 }
             }
 
+            // 심박수 측정
             override fun onDataReceived(data: DataPointContainer) {
                 val heartRateBpm = data.getData(DataType.HEART_RATE_BPM)
                 trySendBlocking(MeasureMessage.MeasureData(heartRateBpm))
@@ -49,8 +53,10 @@ class HealthServicesManager @Inject constructor(
         }
 
         Log.d(TAG, "Registering for data")
+        // 데이터 수신 등록 콜백
         measureClient.registerMeasureCallback(DataType.HEART_RATE_BPM, callback)
 
+        // 등록 취소 콜백
         awaitClose {
             Log.d(TAG, "Unregistering for data")
             runBlocking {

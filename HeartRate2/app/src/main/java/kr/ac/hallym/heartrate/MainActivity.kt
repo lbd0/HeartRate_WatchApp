@@ -8,12 +8,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.health.services.client.data.DataTypeAvailability
 import kr.ac.hallym.heartrate.databinding.ActivityMainBinding
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 
+// Hilt ->  종속 항목 삽입
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
@@ -27,18 +29,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding.root)        // 화면에 표시
 
+        // 퍼미션 결과 콜백 등록
         permissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
                 when(result) {
                     true -> {
+                        // 퍼미션 받음
                         Log.i(TAG, "Body sensors permission granted")
                         // 활동이 최소한 STARTED 상태일 때만 측정
                         lifecycleScope.launchWhenStarted {
                             viewModel.measureHeartRate()
                         }
                     }
+                    // 퍼미션 못 받음
                     false -> Log.i(TAG, "Body sensors permission not granted")
                 }
             }
@@ -51,7 +56,12 @@ class MainActivity : AppCompatActivity() {
         }
         lifecycleScope.launchWhenStarted {
             viewModel.heartRateAvailable.collect {
-                binding.status.text = it.toString()
+                if(it.equals(DataTypeAvailability.AVAILABLE)) {
+                    binding.statusLabel.text = "심박수 측정 중"
+                } else {
+                    binding.statusLabel.text = "심박수 측정 불가"
+                }
+
             }
         }
         lifecycleScope.launchWhenStarted {
@@ -63,22 +73,24 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        // 바디 센서에 대한 퍼미션
         permissionLauncher.launch(android.Manifest.permission.BODY_SENSORS)
     }
 
     private fun updateViewVisiblity(uiState : UiState) {
         (uiState is UiState.Startup).let {
-
+            binding.startImg.isVisible = it
+            binding.startTxt.isVisible = it
         }
 
         // 심박수 기능을 사용할 수 없을 때 화면에 표시
         (uiState is UiState.HeartRateNotAvailable).let {
-
+            binding.statusLabel.isVisible = it
+            binding.unheartImg.isVisible = it
         }
 
         // 심박수 기능을 사용할 수 있을 때 화면에 표시
         (uiState is UiState.HeartRateAvailable).let {
-            binding.status.isVisible = it
             binding.statusLabel.isVisible = it
             binding.heartRate.isVisible = it
             binding.heartImg.isVisible = it
