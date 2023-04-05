@@ -52,6 +52,7 @@ class MainViewModel @Inject constructor(
                     val bpm = it.data.last().value
                     Log.d(TAG, "Data update: $bpm")
                     _heartRateBpm.value = bpm
+                    Thread.sleep(1000);
                 }
             }
         }
