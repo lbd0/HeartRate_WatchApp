@@ -58,10 +58,17 @@ class MainActivity : AppCompatActivity() {
             viewModel.heartRateAvailable.collect {
                 if(it.equals(DataTypeAvailability.AVAILABLE)) {
                     binding.statusLabel.text = "심박수 측정 중"
+                    binding.unheartImg.isVisible = false
+                    binding.statusLabel.isVisible = true
+                    binding.heartRate.isVisible = true
+                    binding.heartImg.isVisible = true
                 } else {
                     binding.statusLabel.text = "심박수 측정 불가"
+                    binding.heartRate.isVisible = false
+                    binding.heartImg.isVisible = false
+                    binding.statusLabel.isVisible = true
+                    binding.unheartImg.isVisible = true
                 }
-
             }
         }
         lifecycleScope.launchWhenStarted {
@@ -81,20 +88,6 @@ class MainActivity : AppCompatActivity() {
         (uiState is UiState.Startup).let {
             binding.startImg.isVisible = it
             binding.startTxt.isVisible = it
-        }
-
-        // 심박수 기능을 사용할 수 없을 때 화면에 표시
-        (uiState is UiState.HeartRateNotAvailable).let {
-            binding.statusLabel.isVisible = it
-            binding.unheartImg.isVisible = it
-        }
-
-        // 심박수 기능을 사용할 수 있을 때 화면에 표시
-        (uiState is UiState.HeartRateAvailable).let {
-            binding.statusLabel.isVisible = it
-            binding.heartRate.isVisible = it
-            binding.heartImg.isVisible = it
-
         }
     }
 }
