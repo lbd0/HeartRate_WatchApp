@@ -40,6 +40,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
+
     @ExperimentalCoroutinesApi
     suspend fun measureHeartRate() {
         healthServicesManager.heartRateMeasureFlow().collect {
@@ -48,6 +49,7 @@ class MainViewModel @Inject constructor(
                     Log.d(TAG, "Availability changed: ${it.availability}")
                     _heartRateAvailable.value = it.availability
                 }
+                // 심박수 데이터 받기
                 is MeasureMessage.MeasureData -> {
                     val bpm = it.data.last().value
                     Log.d(TAG, "Data update: $bpm")
