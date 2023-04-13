@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                 binding.heartRate.text = String.format("%.1f", it)
 
                 val myRef = firebaseDatabase.getReference("bpm")
-                myRef.push().setValue(0.0)
+                myRef.push().setValue(it)
             }
         }
     }
