@@ -6,6 +6,9 @@
     <!-- 심박수 데이터를 받기 위한 permission -->
     <uses-permission android:name="android.permission.BODY_SENSORS" />
 
+    <!-- 인터넷 사용 권한 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- 쿼리를 추가하면 Health Services 에서 앱을 인식할 수 있음 -->
     <queries>
         <package android:name="com.google.android.wearable.healthservices" />

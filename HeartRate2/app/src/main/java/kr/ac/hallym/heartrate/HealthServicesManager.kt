@@ -5,6 +5,8 @@ import androidx.concurrent.futures.await
 import androidx.health.services.client.HealthServicesClient
 import androidx.health.services.client.MeasureCallback
 import androidx.health.services.client.data.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.trySendBlocking
@@ -49,6 +51,7 @@ class HealthServicesManager @Inject constructor(
             override fun onDataReceived(data: DataPointContainer) {
                 val heartRateBpm = data.getData(DataType.HEART_RATE_BPM)
                 trySendBlocking(MeasureMessage.MeasureData(heartRateBpm))
+
             }
         }
 

@@ -11,6 +11,10 @@ import androidx.core.view.isVisible
 import androidx.health.services.client.data.DataTypeAvailability
 import kr.ac.hallym.heartrate.databinding.ActivityMainBinding
 import androidx.lifecycle.lifecycleScope
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -24,12 +28,17 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel : MainViewModel by viewModels()
 
+    private lateinit var firebaseDatabase : FirebaseDatabase
+    private lateinit var databaseReference : DatabaseReference
+
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)        // 화면에 표시
+
+        initDatabase()
 
         // 퍼미션 결과 콜백 등록
         permissionLauncher =
@@ -74,6 +83,9 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launchWhenStarted {
             viewModel.heartRateBpm.collect {
                 binding.heartRate.text = String.format("%.1f", it)
+
+                val myRef = firebaseDatabase.getReference("bpm")
+                myRef.push().setValue(0.0)
             }
         }
     }
@@ -89,5 +101,11 @@ class MainActivity : AppCompatActivity() {
             binding.startImg.isVisible = it
             binding.startTxt.isVisible = it
         }
+    }
+
+    fun initDatabase() {
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        databaseReference = firebaseDatabase.getReference("bpm")
+
     }
 }
