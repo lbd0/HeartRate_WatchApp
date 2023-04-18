@@ -18,6 +18,8 @@ import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 // Hilt ->  종속 항목 삽입
 @AndroidEntryPoint
@@ -84,8 +86,9 @@ class MainActivity : AppCompatActivity() {
             viewModel.heartRateBpm.collect {
                 binding.heartRate.text = String.format("%.1f", it)
 
-                val myRef = firebaseDatabase.getReference("bpm")
-                myRef.push().setValue(it.toString() + "bpm")
+                val myRef = firebaseDatabase.getReference("bpm")    // Firebase DB의 bpm 참조
+                val dateAndtime : LocalDateTime = LocalDateTime.now()   // 현재 날짜와 시간 받기
+                myRef.push().setValue(it.toString() + " $dateAndtime")  // Firebase DB에 심박수, 날짜와 시간 저장
             }
         }
     }
