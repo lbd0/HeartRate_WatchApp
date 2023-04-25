@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 
                 val myRef = firebaseDatabase.getReference("bpm")    // Firebase DB의 bpm 참조
                 val dateAndtime : LocalDateTime = LocalDateTime.now()   // 현재 날짜와 시간 받기
-                myRef.push().setValue(it.toString() + " $dateAndtime")  // Firebase DB에 심박수, 날짜와 시간 저장
+                myRef.setValue(it.toString() + " $dateAndtime")  // Firebase DB에 심박수, 날짜와 시간 저장
             }
         }
     }
