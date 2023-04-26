@@ -86,9 +86,12 @@ class MainActivity : AppCompatActivity() {
             viewModel.heartRateBpm.collect {
                 binding.heartRate.text = String.format("%.1f", it)
 
-                val myRef = firebaseDatabase.getReference("bpm")    // Firebase DB의 bpm 참조
+                var myRef = firebaseDatabase.getReference("bpm")    // Firebase DB의 bpm 참조
                 val dateAndtime : LocalDateTime = LocalDateTime.now()   // 현재 날짜와 시간 받기
-                myRef.setValue(it.toString() + " $dateAndtime")  // Firebase DB에 심박수, 날짜와 시간 저장
+                myRef.setValue(it.toString() + " $dateAndtime")  // bpm에 심박수, 날짜와 시간 덮어쓰기로 저장
+
+                myRef = firebaseDatabase.getReference("test_bpm")   // Firebase DB의 test_bpm 참조
+                myRef.push().setValue(it.toString() + " $dateAndtime")  // test_bpm에 심박수, 날짜와 시간 쌓아서 저장
             }
         }
     }
@@ -101,6 +104,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateViewVisiblity(uiState : UiState) {
         (uiState is UiState.Startup).let {
+            binding.heartRate.isVisible = false
+            binding.heartImg.isVisible = false
+            binding.statusLabel.isVisible = false
+            binding.unheartImg.isVisible = false
             binding.startImg.isVisible = it
             binding.startTxt.isVisible = it
         }
