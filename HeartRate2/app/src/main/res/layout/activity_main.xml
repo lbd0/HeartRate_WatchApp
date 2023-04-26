@@ -8,7 +8,8 @@
     tools:context=".MainActivity"
     tools:deviceIds="wear"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:keepScreenOn="true">
 
         <LinearLayout
             android:layout_width="match_parent"
