@@ -1,6 +1,7 @@
 package kr.ac.hallym.heartrate
 
 import android.util.Log
+import androidx.health.services.client.data.DataType
 import androidx.health.services.client.data.DataTypeAvailability
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,7 +23,7 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Startup)
-    val uiState: StateFlow<UiState> = _uiState
+    var uiState: StateFlow<UiState> = _uiState
 
     private val _heartRateAvailable = MutableStateFlow(DataTypeAvailability.UNKNOWN)
     val heartRateAvailable: StateFlow<DataTypeAvailability> = _heartRateAvailable
@@ -32,7 +33,6 @@ class MainViewModel @Inject constructor(
 
     init {
         // 장치에 심박수 기능이 있는지 확인하고 다음 상태로 진행
-
         viewModelScope.launch {
             _uiState.value = if (healthServicesManager.hasHeartRateCapability()) {
                 UiState.HeartRateAvailable

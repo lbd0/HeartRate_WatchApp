@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
 
     private val viewModel : MainViewModel by viewModels()
+    private var uiState : UiState = UiState.Startup
 
     private lateinit var firebaseDatabase : FirebaseDatabase
     private lateinit var databaseReference : DatabaseReference
@@ -62,23 +63,16 @@ class MainActivity : AppCompatActivity() {
         // 뷰 모델 상태를 UI에 바인딩
         lifecycleScope.launchWhenStarted {
             viewModel.uiState.collect {
-                updateViewVisiblity(it)
+                updateViewVisiblity(UiState.Startup)
             }
         }
         lifecycleScope.launchWhenStarted {
             viewModel.heartRateAvailable.collect {
-                if(it.equals(DataTypeAvailability.AVAILABLE)) {
-                    binding.statusLabel.text = "심박수 측정 중"
-                    binding.unheartImg.isVisible = false
-                    binding.statusLabel.isVisible = true
-                    binding.heartRate.isVisible = true
-                    binding.heartImg.isVisible = true
-                } else {
+                if(it.equals(DataTypeAvailability.UNAVAILABLE_DEVICE_OFF_BODY)) {
                     binding.statusLabel.text = "심박수 측정 불가"
-                    binding.heartRate.isVisible = false
-                    binding.heartImg.isVisible = false
-                    binding.statusLabel.isVisible = true
-                    binding.unheartImg.isVisible = true
+                    updateViewVisiblity(UiState.HeartRateNotAvailable)
+                } else {
+                    updateViewVisiblity(UiState.HeartRateAvailable)
                 }
             }
         }
@@ -104,12 +98,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateViewVisiblity(uiState : UiState) {
         (uiState is UiState.Startup).let {
-            binding.heartRate.isVisible = false
-            binding.heartImg.isVisible = false
-            binding.statusLabel.isVisible = false
-            binding.unheartImg.isVisible = false
             binding.startImg.isVisible = it
             binding.startTxt.isVisible = it
+        }
+
+        (uiState is UiState.HeartRateAvailable).let {
+            binding.heartRate.isVisible = it
+            binding.heartImg.isVisible = it
+        }
+
+        (uiState is UiState.HeartRateNotAvailable).let {
+            binding.statusLabel.isVisible = it
+            binding.unheartImg.isVisible = it
         }
     }
 
