@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
                 myRef.setValue(it.toString() + " $dateAndtime")  // bpm에 심박수, 날짜와 시간 덮어쓰기로 저장
 
                 myRef = firebaseDatabase.getReference("test_bpm")   // Firebase DB의 test_bpm 참조
-                myRef.child("$dateAndtime").push().setValue(it.toString())  // test_bpm에 심박수, 날짜와 시간 쌓아서 저장
+                myRef.push().setValue(it.toString() + " $dateAndtime")  // test_bpm에 심박수, 날짜와 시간 쌓아서 저장
             }
         }
     }
