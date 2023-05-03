@@ -63,17 +63,22 @@ class MainActivity : AppCompatActivity() {
         // 뷰 모델 상태를 UI에 바인딩
         lifecycleScope.launchWhenStarted {
             viewModel.uiState.collect {
-                updateViewVisiblity(UiState.Startup)
+                updateViewVisiblity(it)
             }
         }
         lifecycleScope.launchWhenStarted {
             viewModel.heartRateAvailable.collect {
-                if(it.equals(DataTypeAvailability.UNAVAILABLE_DEVICE_OFF_BODY)) {
-                    binding.statusLabel.text = "심박수 측정 불가"
-                    updateViewVisiblity(UiState.HeartRateNotAvailable)
+                if(it == DataTypeAvailability.AVAILABLE) {
+                    binding.statusLabel.text = "심박수 측정 중"
+                    binding.heartImg.setImageResource(R.drawable.heart_rate)
+                    binding.heartRate.isVisible = true
+
                 } else {
-                    updateViewVisiblity(UiState.HeartRateAvailable)
+                    binding.statusLabel.text = "심박수 측정 불가"
+                    binding.heartImg.setImageResource(R.drawable.broken_heart)
+                    binding.heartRate.isVisible = false
                 }
+                
             }
         }
         lifecycleScope.launchWhenStarted {
@@ -102,20 +107,19 @@ class MainActivity : AppCompatActivity() {
             binding.startTxt.isVisible = it
         }
 
-        (uiState is UiState.HeartRateAvailable).let {
-            binding.heartRate.isVisible = it
-            binding.heartImg.isVisible = it
-        }
-
         (uiState is UiState.HeartRateNotAvailable).let {
             binding.statusLabel.isVisible = it
             binding.unheartImg.isVisible = it
+        }
+
+        (uiState is UiState.HeartRateAvailable).let {
+            binding.statusLabel.isVisible = it
+            binding.heartImg.isVisible = it
         }
     }
 
     fun initDatabase() {
         firebaseDatabase = FirebaseDatabase.getInstance()
         databaseReference = firebaseDatabase.getReference("bpm")
-
     }
 }
