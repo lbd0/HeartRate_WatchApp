@@ -63,27 +63,27 @@ class MainActivity : AppCompatActivity() {
         // 뷰 모델 상태를 UI에 바인딩
         lifecycleScope.launchWhenStarted {
             viewModel.uiState.collect {
-                updateViewVisiblity(it)
+                updateViewVisiblity(it)         // UI 업데이트
             }
         }
         lifecycleScope.launchWhenStarted {
             viewModel.heartRateAvailable.collect {
                 if(it == DataTypeAvailability.AVAILABLE) {
-                    binding.statusLabel.text = "심박수 측정 중"
-                    binding.heartImg.setImageResource(R.drawable.heart_rate)
-                    binding.heartRate.isVisible = true
+                    binding.statusLabel.text = "심박수 측정 중"       // 상태 텍스트 변경
+                    binding.heartImg.setImageResource(R.drawable.heart_rate)    // 심박수 측정 이미지 변경
+                    binding.heartRate.isVisible = true                          // 심박수 표시 켬
 
                 } else {
-                    binding.statusLabel.text = "심박수 측정 불가"
-                    binding.heartImg.setImageResource(R.drawable.broken_heart)
-                    binding.heartRate.isVisible = false
+                    binding.statusLabel.text = "심박수 측정 불가"      // 상태 텍스트 변경
+                    binding.heartImg.setImageResource(R.drawable.broken_heart)      // 심박수 측정 불가 이미지 변경
+                    binding.heartRate.isVisible = false                             // 심박수 표시 끔
                 }
                 
             }
         }
         lifecycleScope.launchWhenStarted {
             viewModel.heartRateBpm.collect {
-                binding.heartRate.text = String.format("%.1f", it)
+                binding.heartRate.text = String.format("%.1f", it)      // 심박수 표시
 
                 var myRef = firebaseDatabase.getReference("bpm")    // Firebase DB의 bpm 참조
                 val dateAndtime : LocalDateTime = LocalDateTime.now()   // 현재 날짜와 시간 받기
@@ -102,17 +102,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateViewVisiblity(uiState : UiState) {
-        (uiState is UiState.Startup).let {
+        (uiState is UiState.Startup).let { // 앱 시작 시 UI
             binding.startImg.isVisible = it
             binding.startTxt.isVisible = it
         }
 
-        (uiState is UiState.HeartRateNotAvailable).let {
+        (uiState is UiState.HeartRateNotAvailable).let {    // 심박수 측정 불가 시 UI (기기에 심박수 측정 기능이 없을 때)
             binding.statusLabel.isVisible = it
             binding.unheartImg.isVisible = it
         }
 
-        (uiState is UiState.HeartRateAvailable).let {
+        (uiState is UiState.HeartRateAvailable).let {       // 심박수 측정 시 UI
             binding.statusLabel.isVisible = it
             binding.heartImg.isVisible = it
         }
