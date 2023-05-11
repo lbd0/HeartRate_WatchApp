@@ -25,14 +25,14 @@ import java.time.format.DateTimeFormatter
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var permissionLauncher: ActivityResultLauncher<String>
+    private lateinit var binding: ActivityMainBinding   // 바인딩
+    private lateinit var permissionLauncher: ActivityResultLauncher<String>     // 퍼미션 받는 런처
 
-    private val viewModel : MainViewModel by viewModels()
-    private var uiState : UiState = UiState.Startup
+    private val viewModel : MainViewModel by viewModels()       // 뷰모델 객체
+    private var uiState : UiState = UiState.Startup             // UI 상태
 
-    private lateinit var firebaseDatabase : FirebaseDatabase
-    private lateinit var databaseReference : DatabaseReference
+    private lateinit var firebaseDatabase : FirebaseDatabase    // 파이어베이스 변수
+    private lateinit var databaseReference : DatabaseReference  // 파이어베이스에서 child 참조
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)        // 화면에 표시
 
-        initDatabase()
+        initDatabase()      // 파이어베이스 연결
 
         // 퍼미션 결과 콜백 등록
         permissionLauncher =
@@ -118,8 +118,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun initDatabase() {
+    fun initDatabase() {    // firebaseDB와 연결
         firebaseDatabase = FirebaseDatabase.getInstance()
-        databaseReference = firebaseDatabase.getReference("bpm")
+        databaseReference = firebaseDatabase.getReference("bpm")    // bpm 참조
     }
 }

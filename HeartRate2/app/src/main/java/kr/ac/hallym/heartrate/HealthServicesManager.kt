@@ -1,5 +1,6 @@
 package kr.ac.hallym.heartrate
 
+import android.renderscript.Element
 import android.util.Log
 import androidx.concurrent.futures.await
 import androidx.health.services.client.HealthServicesClient
@@ -26,7 +27,7 @@ class HealthServicesManager @Inject constructor(
     // 기기가 심박수를 제공할 수 있는지 확인
     suspend fun hasHeartRateCapability(): Boolean {
         val capabiliies = measureClient.getCapabilitiesAsync().await()
-        return (DataType.HEART_RATE_BPM in capabiliies.supportedDataTypesMeasure)
+        return (Element.DataType.HEART_RATE_BPM in capabiliies.supportedDataTypesMeasure)
     }
 
     /**
@@ -49,7 +50,7 @@ class HealthServicesManager @Inject constructor(
 
             // 심박수 측정
             override fun onDataReceived(data: DataPointContainer) {
-                val heartRateBpm = data.getData(DataType.HEART_RATE_BPM)
+                val heartRateBpm = data.getData(Element.DataType.HEART_RATE_BPM)    // 측정한 심박수 받음
                 trySendBlocking(MeasureMessage.MeasureData(heartRateBpm))
 
             }
@@ -57,13 +58,13 @@ class HealthServicesManager @Inject constructor(
 
         Log.d(TAG, "Registering for data")
         // 데이터 수신 등록 콜백
-        measureClient.registerMeasureCallback(DataType.HEART_RATE_BPM, callback)
+        measureClient.registerMeasureCallback(Element.DataType.HEART_RATE_BPM, callback)
 
         // 등록 취소 콜백
         awaitClose {
             Log.d(TAG, "Unregistering for data")
             runBlocking {
-                measureClient.unregisterMeasureCallbackAsync(DataType.HEART_RATE_BPM, callback)
+                measureClient.unregisterMeasureCallbackAsync(Element.DataType.HEART_RATE_BPM, callback)
             }
         }
     }
