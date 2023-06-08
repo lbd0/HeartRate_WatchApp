@@ -20,10 +20,9 @@
                 android:id="@+id/statusLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="이 기기에서 심박수 측정 불가"
+                android:text="심박수 측정 중"
                 android:gravity="center"
-                android:textSize="15sp"
-                android:visibility="gone"/>
+                android:textSize="15sp"/>
 
 
         </LinearLayout>
@@ -55,8 +54,7 @@
                 android:id="@+id/heartImg"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/heart_rate"
-                android:visibility="gone"/>
+                android:src="@drawable/heart_rate"/>
 
             <ImageView
                 android:id="@+id/unheartImg"
@@ -71,8 +69,7 @@
                 android:layout_height="wrap_content"
                 android:text="100"
                 android:layout_marginLeft="10dp"
-                android:textSize="45dp"
-                android:visibility="gone"/>
+                android:textSize="45dp"/>
 
         </LinearLayout>
 
