@@ -56,6 +56,7 @@
     <br><br>
     <h3> 🏅 2023한국컴퓨터그래픽스학회 우수학부포스터상 수상 </h3>
     <img src="https://github.com/user-attachments/assets/5e0642a7-a35f-4dfb-8114-b54f493860f1"/>
+    <img src="https://github.com/user-attachments/assets/2b1b85f1-904e-40dd-bc95-f728f0bf3e55"/>
   </div>
   
   <br><br>
