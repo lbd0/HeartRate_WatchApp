@@ -6,10 +6,13 @@
 
   <br>
 
+  <!-- Introduce -->
+  <h4> 👾 사용자의 심박수를 게임의 요소로 설정하여 입력받은 심박수에 따라 게임의 난이도가 달라지는 VR 게임 </h4>
+
   <!-- Team -->
-  <h3> 🦄 Team : VRhythm </h3>
-  <h3> 👨‍👩‍👧‍👦 Members : 박서윤, 이바다, 이채현, 이혜은, 최예찬 </h3>
-  <h3> 🔗 https://github.com/Mellow1213/2023_Capstone (Asset 저작권 문제로 비공개) </h3>
+  <h4> 🦄 Team : VRhythm (2023)</h4>
+  <h4> 👨‍👩‍👧‍👦 Members : 박서윤, 이바다, 이채현, 이혜은, 최예찬 </h4>
+  <h4> 🔗 https://github.com/Mellow1213/2023_Capstone (Asset 저작권 문제로 비공개) </h4>
 
   <br>
 
@@ -22,7 +25,6 @@
 
   <!-- Tools -->
   <h2> Tools </h2>
-  <br>
   <div>
     <img src="https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white"/>&nbsp&nbsp
     <img src="https://img.shields.io/badge/blender-E87D0D?style=for-the-badge&logo=blender&logoColor=white"/>&nbsp&nbsp
@@ -34,8 +36,8 @@
 
   <!-- Devices -->
   <h2> Devices </h2>
-  <h3> 🥽 Meta Quest Pro </h3>
-  <h3> ⌚ Galaxy Watch 4 Golf Edition </h3>
+  <h4> 🥽 Meta Quest Pro </h4>
+  <h4> ⌚ Galaxy Watch 4 Golf Edition </h4>
   
   <br>
 
@@ -43,7 +45,7 @@
   <h2> HeartRate WearOS Application </h2>
   <br>
   <img src="https://github.com/lbd0/HeartRate_WatchApp/assets/80818640/ff95a3b7-a943-4cc9-a96f-42e2372cf7dc">
-  <h3> 📱 Health Services API 사용 </h3>
+  <h4> 📱 Health Services API 사용 </h4>
   
   <br>
 
@@ -51,10 +53,10 @@
   <h2> Awards </h2>
   <div align="center">
     <br>
-    <h3> 🏅 2023 1학기 SW 캡스톤 디자인 경진대회 장려상 수상 </h3>
+    <h4> 🏅 2023 1학기 SW 캡스톤 디자인 경진대회 장려상 수상 </h4>
     <img src="https://github.com/user-attachments/assets/27576e5c-6914-4c59-ae32-a6c5386ef6a0"/>
     <br><br>
-    <h3> 🏅 2023한국컴퓨터그래픽스학회 우수학부포스터상 수상 </h3>
+    <h4> 🏅 2023한국컴퓨터그래픽스학회 우수학부포스터상 수상 </h4>
     <img src="https://github.com/user-attachments/assets/5e0642a7-a35f-4dfb-8114-b54f493860f1"/>
     <img src="https://github.com/user-attachments/assets/2b1b85f1-904e-40dd-bc95-f728f0bf3e55"/>
   </div>
