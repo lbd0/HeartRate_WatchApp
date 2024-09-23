@@ -62,7 +62,7 @@
   <h2> Activities </h2>
   <div>
     <h4> &nbsp&nbsp&nbsp • &nbsp 2023 1학기 SW 캡스톤 디자인 경진대회 </h4>
-    <h4> &nbsp&nbsp&nbsp • &nbsp 2023 강원SW페스티벌 </h4>
+    <h4> &nbsp&nbsp&nbsp • &nbsp 2023 강원SW대학 SW페스티벌 </h4>
     <h4> &nbsp&nbsp&nbsp • &nbsp 2023 KCGS(한국컴퓨터그래픽스학회) (포스터논문) </h4>
   </div>
 
@@ -85,7 +85,7 @@
     <h4> 📑 2023 1학기 SW 캡스톤 디자인 경진대회 </h4>
     <br><br>
     <img src="https://github.com/user-attachments/assets/ee3485e7-8068-4496-8215-02fcd4f6c183"/>
-    <h4> 📑 2023 강원SW페스티벌 </h4>
+    <h4> 📑 2023 강원SW대학 SW페스티벌 </h4>
     <br><br>
     <img src="https://github.com/user-attachments/assets/5e0642a7-a35f-4dfb-8114-b54f493860f1"/>
     <h4> 📑 2023 KCGS(한국컴퓨터그래픽스학회) </h4>
