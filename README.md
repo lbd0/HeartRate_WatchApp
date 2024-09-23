@@ -6,13 +6,20 @@
 
   <br>
 
-  <!-- Introduce -->
-  <h4> 👾 사용자의 심박수를 게임의 요소로 설정하여 입력받은 심박수에 따라 게임의 난이도가 달라지는 VR 게임 </h4>
-
   <!-- Team -->
   <h4> 🦄 Team : VRhythm (2023)</h4>
   <h4> 👨‍👩‍👧‍👦 Members : 박서윤, 이바다, 이채현, 이혜은, 최예찬 </h4>
   <h4> 🔗 https://github.com/Mellow1213/2023_Capstone (Asset 저작권 문제로 비공개) </h4>
+
+  <br>
+
+  <!-- Introduction-->
+  <h2> Introduction </h2>
+  <div>
+    <h4> &nbsp&nbsp&nbsp • &nbsp 목표 : 사용자 맞춤형 콘텐츠를 통해 최적의 경험을 제공하기 위함 </h4>
+    <h4> &nbsp&nbsp&nbsp • &nbsp 주제 : 사용자 개개인의 감정 상태를 파악하고 반응하는 사용자 경험 중심의 가상현실 게임 </h4>
+    <h4> &nbsp&nbsp&nbsp • &nbsp 내용 : 이산적인 생체 정보인 심박수로 사용자의 감정 상태를 판단하고, 실시간으로 게임에 적용 </h4>
+  </div>
 
   <br>
 
@@ -44,21 +51,44 @@
   <!-- Application -->
   <h2> HeartRate WearOS Application </h2>
   <br>
-  <img src="https://github.com/lbd0/HeartRate_WatchApp/assets/80818640/ff95a3b7-a943-4cc9-a96f-42e2372cf7dc">
-  <h4> 📱 Health Services API 사용 </h4>
+  <div align="center">
+    <img src="https://github.com/lbd0/HeartRate_WatchApp/assets/80818640/ff95a3b7-a943-4cc9-a96f-42e2372cf7dc">
+    <h4> 📱 Health Services API 사용 </h4>
+  </div>
   
+  <br>
+
+  <!-- Activities -->
+  <h2> Activities </h2>
+  <div>
+    <h4> &nbsp&nbsp&nbsp • &nbsp 2023 1학기 SW 캡스톤 디자인 경진대회 </h4>
+    <h4> &nbsp&nbsp&nbsp • &nbsp 2023 강원SW페스티벌 </h4>
+    <h4> &nbsp&nbsp&nbsp • &nbsp 2023 KCGS(한국컴퓨터그래픽스학회) (포스터논문) </h4>
+  </div>
+
   <br>
 
   <!-- Awards -->
   <h2> Awards </h2>
-  <div align="center">
-    <br>
+  <div>
     <h4> 🏅 2023 1학기 SW 캡스톤 디자인 경진대회 장려상 수상 </h4>
-    <img src="https://github.com/user-attachments/assets/27576e5c-6914-4c59-ae32-a6c5386ef6a0"/>
-    <br><br>
-    <h4> 🏅 2023한국컴퓨터그래픽스학회 우수학부포스터상 수상 </h4>
-    <img src="https://github.com/user-attachments/assets/5e0642a7-a35f-4dfb-8114-b54f493860f1"/>
+    <h4> 🏅 2023 KCGS(한국컴퓨터그래픽스학회) 우수학부포스터상 수상 </h4>
     <img src="https://github.com/user-attachments/assets/2b1b85f1-904e-40dd-bc95-f728f0bf3e55"/>
+  </div>
+
+  <br>
+
+  <!-- Poster -->
+  <h2> Posters </h2>
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/27576e5c-6914-4c59-ae32-a6c5386ef6a0"/>
+    <h4> 📑 2023 1학기 SW 캡스톤 디자인 경진대회 </h4>
+    <br><br>
+    <img src="https://github.com/user-attachments/assets/ee3485e7-8068-4496-8215-02fcd4f6c183"/>
+    <h4> 📑 2023 강원SW페스티벌 </h4>
+    <br><br>
+    <img src="https://github.com/user-attachments/assets/5e0642a7-a35f-4dfb-8114-b54f493860f1"/>
+    <h4> 📑 2023 KCGS(한국컴퓨터그래픽스학회) </h4>
   </div>
   
   <br><br>
