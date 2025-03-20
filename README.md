@@ -8,7 +8,7 @@
 
   <!-- Team -->
   <h4> 🦄 Team : VRhythm (2023)</h4>
-  <h4> 👨‍👩‍👧‍👦 Members : 박서윤, 이바다, 이채현, 이혜은, 최예찬 </h4>
+  <h4> 👨‍👩‍👧‍👦 Members : 박서윤, 이바다, 이채현, 이혜은, 최예찬ㅂ </h4>
   <h4> 🔗 https://github.com/Mellow1213/2023_Capstone (Asset 저작권 문제로 비공개) </h4>
 
   <br>
