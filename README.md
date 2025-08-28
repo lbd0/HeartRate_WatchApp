@@ -19,6 +19,7 @@
     <h4> &nbsp&nbsp&nbsp • &nbsp 목표 : 사용자 맞춤형 콘텐츠를 통해 최적의 경험을 제공하기 위함 </h4>
     <h4> &nbsp&nbsp&nbsp • &nbsp 주제 : 사용자 개개인의 감정 상태를 파악하고 반응하는 사용자 경험 중심의 가상현실 게임 </h4>
     <h4> &nbsp&nbsp&nbsp • &nbsp 내용 : 이산적인 생체 정보인 심박수로 사용자의 감정 상태를 판단하고, 실시간으로 게임에 적용 </h4>
+    <h4> &nbsp&nbsp&nbsp • &nbsp 영상 : https://youtu.be/cOHCTBj7_PU </h4>
   </div>
 
   <br>
